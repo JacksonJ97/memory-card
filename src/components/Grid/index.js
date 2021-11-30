@@ -14,10 +14,28 @@ const Wrapper = styled.div`
 `;
 
 const Grid = (props) => {
-  const [data, setData] = useState(props.data);
+  const [shuffledData, setShuffledData] = useState([]);
+
+  useEffect(() => {
+    const handleShuffle = () => {
+      const dataCopy = [...props.data];
+
+      for (let i = dataCopy.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+        const temp = dataCopy[i];
+        dataCopy[i] = dataCopy[randomIndex];
+        dataCopy[randomIndex] = temp;
+      }
+
+      setShuffledData(dataCopy);
+      console.log("handleShuffle in the useEffect");
+    };
+
+    handleShuffle();
+  }, [props.data]);
 
   const handleShuffle = () => {
-    const dataCopy = [...data];
+    const dataCopy = [...shuffledData];
 
     for (let i = dataCopy.length - 1; i > 0; i--) {
       const randomIndex = Math.floor(Math.random() * (i + 1));
@@ -26,32 +44,13 @@ const Grid = (props) => {
       dataCopy[randomIndex] = temp;
     }
 
-    setData(dataCopy);
+    setShuffledData(dataCopy);
     console.log("handleShuffle in the Card component");
   };
 
-  useEffect(() => {
-    if (data === props.data) {
-      const handleShuffle = () => {
-        const dataCopy = [...data];
-
-        for (let i = dataCopy.length - 1; i > 0; i--) {
-          const randomIndex = Math.floor(Math.random() * (i + 1));
-          const temp = dataCopy[i];
-          dataCopy[i] = dataCopy[randomIndex];
-          dataCopy[randomIndex] = temp;
-        }
-        console.log("handleShuffle in the useEffect");
-        setData(dataCopy);
-      };
-
-      handleShuffle();
-    }
-  }, [data, props.data]);
-
   return (
     <Wrapper>
-      {data.map((element, index) => (
+      {shuffledData.map((element, index) => (
         <Card name={element.name} img={element.img} key={index} handleShuffle={handleShuffle} />
       ))}
     </Wrapper>
