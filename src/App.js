@@ -1,3 +1,5 @@
+// import { useState, useEffect } from "react";
+
 // Components
 import Scoreboard from "./components/Scoreboard";
 import Grid from "./components/Grid";
@@ -6,26 +8,51 @@ import Grid from "./components/Grid";
 import GlobalStyle from "./theme/GlobalStyle";
 
 // Hooks
-import useFetch from "./hooks/useFetch";
+// import useFetch from "./hooks/useFetch";
 
 // Helpers
-import formatData from "./helpers/formatData";
+// import formatData from "./helpers/formatData";
+
+// Data
+import { exampleData } from "./config";
 
 const App = () => {
-  const [data] = useFetch(12);
-  let formattedData = [];
+  // const [fetchedData] = useFetch(12);
+  // const [formattedData, setFormattedData] = useState([]);
+  // const [shuffledData, setShuffledData] = useState([]);
 
-  if (data) {
-    formattedData = formatData(data);
-  }
+  // useEffect(() => {
+  //   if (fetchedData) {
+  //     const formattedFetchedData = formatData(fetchedData);
+  //     setFormattedData(formattedFetchedData);
+  //   }
+  // }, [fetchedData]);
 
-  console.log(data);
-  console.log(formattedData);
+  // useEffect(() => {
+  //   const handleShuffle = () => {
+  //     const formattedDataCopy = [...formattedData];
+
+  //     for (let i = formattedDataCopy.length - 1; i > 0; i--) {
+  //       const randomIndex = Math.floor(Math.random() * (i + 1));
+  //       const temp = formattedDataCopy[i];
+  //       formattedDataCopy[i] = formattedDataCopy[randomIndex];
+  //       formattedDataCopy[randomIndex] = temp;
+  //     }
+
+  //     setShuffledData(formattedDataCopy);
+  //     console.log(formattedDataCopy);
+  //   };
+
+  //   handleShuffle();
+  // }, [formattedData]);
+
+  // console.log(fetchedData);
+  // console.log(formattedData);
   return (
     <>
       <GlobalStyle />
       <Scoreboard />
-      <Grid data={formattedData} />
+      <Grid data={exampleData} />
     </>
   );
 };

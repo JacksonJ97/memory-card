@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Components
@@ -13,10 +14,45 @@ const Wrapper = styled.div`
 `;
 
 const Grid = (props) => {
+  const [data, setData] = useState(props.data);
+
+  const handleShuffle = () => {
+    const dataCopy = [...data];
+
+    for (let i = dataCopy.length - 1; i > 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      const temp = dataCopy[i];
+      dataCopy[i] = dataCopy[randomIndex];
+      dataCopy[randomIndex] = temp;
+    }
+
+    setData(dataCopy);
+    console.log("handleShuffle in the Card component");
+  };
+
+  useEffect(() => {
+    if (data === props.data) {
+      const handleShuffle = () => {
+        const dataCopy = [...data];
+
+        for (let i = dataCopy.length - 1; i > 0; i--) {
+          const randomIndex = Math.floor(Math.random() * (i + 1));
+          const temp = dataCopy[i];
+          dataCopy[i] = dataCopy[randomIndex];
+          dataCopy[randomIndex] = temp;
+        }
+        console.log("handleShuffle in the useEffect");
+        setData(dataCopy);
+      };
+
+      handleShuffle();
+    }
+  }, [data, props.data]);
+
   return (
     <Wrapper>
-      {props.data.map((element, index) => (
-        <Card name={element.name} img={element.img} key={index} />
+      {data.map((element, index) => (
+        <Card name={element.name} img={element.img} key={index} handleShuffle={handleShuffle} />
       ))}
     </Wrapper>
   );
