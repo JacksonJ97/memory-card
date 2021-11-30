@@ -1,4 +1,14 @@
+// Components
+import Scoreboard from "./components/Scoreboard";
+import Grid from "./components/Grid";
+
+// Styles
+import GlobalStyle from "./theme/GlobalStyle";
+
+// Hooks
 import useFetch from "./hooks/useFetch";
+
+// Helpers
 import formatData from "./helpers/formatData";
 
 const App = () => {
@@ -11,7 +21,13 @@ const App = () => {
 
   console.log(data);
   console.log(formattedData);
-  return <div>Hello World!</div>;
+  return (
+    <>
+      <GlobalStyle />
+      <Scoreboard />
+      <Grid data={formattedData} />
+    </>
+  );
 };
 
 export default App;

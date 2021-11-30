@@ -3,6 +3,7 @@ const formatData = (data) => {
     name: element.name,
     img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
   }));
+
   return formattedData;
 };
 
