@@ -15,7 +15,9 @@ const useFetch = (amount) => {
         const formattedData = formatData(data);
         setFetchedData(formattedData);
       } catch (error) {
-        console.log(error);
+        if (controller.signal.abort) {
+          console.log(error);
+        }
       }
     };
 
