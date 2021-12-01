@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/odin-memory-card/static/js/main.4da4e252.chunk.js",
+    "main.js.map": "/odin-memory-card/static/js/main.4da4e252.chunk.js.map",
+    "runtime-main.js": "/odin-memory-card/static/js/runtime-main.1a67233c.js",
+    "runtime-main.js.map": "/odin-memory-card/static/js/runtime-main.1a67233c.js.map",
+    "static/js/2.4fcb2d4d.chunk.js": "/odin-memory-card/static/js/2.4fcb2d4d.chunk.js",
+    "static/js/2.4fcb2d4d.chunk.js.map": "/odin-memory-card/static/js/2.4fcb2d4d.chunk.js.map",
+    "index.html": "/odin-memory-card/index.html",
+    "static/js/2.4fcb2d4d.chunk.js.LICENSE.txt": "/odin-memory-card/static/js/2.4fcb2d4d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1a67233c.js",
+    "static/js/2.4fcb2d4d.chunk.js",
+    "static/js/main.4da4e252.chunk.js"
+  ]
+}
