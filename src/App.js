@@ -11,58 +11,44 @@ import GlobalStyle from "./theme/GlobalStyle";
 // import useFetch from "./hooks/useFetch";
 
 // Helpers
-// import formatData from "./helpers/formatData";
 import shuffleData from "./helpers/shuffleData";
 
 // Data
 import { exampleData } from "./config";
 
 const App = () => {
-  // const [fetchedData] = useFetch(12);
-  // const [formattedData, setFormattedData] = useState([]);
-  // const [shuffledData, setShuffledData] = useState([]);
-
-  // useEffect(() => {
-  //   if (fetchedData) {
-  //     const formattedFetchedData = formatData(fetchedData);
-  //     setFormattedData(formattedFetchedData);
-  //   }
-  // }, [fetchedData]);
-
-  // useEffect(() => {
-  //   const handleShuffle = () => {
-  //     const formattedDataCopy = [...formattedData];
-
-  //     for (let i = formattedDataCopy.length - 1; i > 0; i--) {
-  //       const randomIndex = Math.floor(Math.random() * (i + 1));
-  //       const temp = formattedDataCopy[i];
-  //       formattedDataCopy[i] = formattedDataCopy[randomIndex];
-  //       formattedDataCopy[randomIndex] = temp;
-  //     }
-
-  //     setShuffledData(formattedDataCopy);
-  //     console.log(formattedDataCopy);
-  //   };
-
-  //   handleShuffle();
-  // }, [formattedData]);
-
-  // console.log(fetchedData);
-  // console.log(formattedData);
   const [shuffledData, setShuffledData] = useState([]);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [clickedIDs, setClickedIDs] = useState([]);
 
   useEffect(() => {
     shuffleData(exampleData, setShuffledData);
-  }, []);
+  }, []); // When changing to use fetched data, need to list the fetched data as a dependency
 
-  const [currentScore, setCurrentScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
+  const handleCardClick = (e, data, setData) => {
+    shuffleData(data, setData);
+    setCurrentScore((currentScore) => currentScore + 1);
+    setClickedIDs([...clickedIDs, e.currentTarget.id]);
+
+    if (clickedIDs.includes(e.currentTarget.id)) {
+      if (currentScore > bestScore) {
+        setBestScore(currentScore);
+      }
+
+      setCurrentScore(0);
+      setClickedIDs([]);
+    }
+  };
+
+  console.log(clickedIDs);
+  console.log("test");
 
   return (
     <>
       <GlobalStyle />
-      <Scoreboard />
-      <Grid data={shuffledData} handleShuffle={() => shuffleData(shuffledData, setShuffledData)} />
+      <Scoreboard currentScore={currentScore} bestScore={bestScore} />
+      <Grid data={shuffledData} handleCardClick={(e) => handleCardClick(e, shuffledData, setShuffledData)} />
     </>
   );
 };

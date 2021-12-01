@@ -16,7 +16,7 @@ const Grid = (props) => {
   return (
     <Wrapper>
       {props.data.map((element, index) => (
-        <Card name={element.name} img={element.img} key={index} handleShuffle={props.handleShuffle} />
+        <Card name={element.name} img={element.img} handleCardClick={props.handleCardClick} id={element.id} key={index} />
       ))}
     </Wrapper>
   );

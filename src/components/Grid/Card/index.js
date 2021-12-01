@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 
 const Card = (props) => {
   return (
-    <Wrapper onClick={props.handleShuffle}>
+    <Wrapper onClick={props.handleCardClick} id={props.id}>
       <img src={props.img} alt={props.name} />
       <p>{props.name}</p>
     </Wrapper>

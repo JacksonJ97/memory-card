@@ -9,11 +9,11 @@ const Wrapper = styled.div`
   margin: 2em auto;
 `;
 
-const Scoreboard = () => {
+const Scoreboard = (props) => {
   return (
     <Wrapper>
-      <div className="current-score">Current Score: 0</div>
-      <div className="best-score">Best Score: 0</div>
+      <div className="current-score">Current Score: {props.currentScore}</div>
+      <div className="best-score">Best Score: {props.bestScore}</div>
     </Wrapper>
   );
 };
