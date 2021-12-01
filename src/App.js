@@ -8,23 +8,21 @@ import Grid from "./components/Grid";
 import GlobalStyle from "./theme/GlobalStyle";
 
 // Hooks
-// import useFetch from "./hooks/useFetch";
+import useFetch from "./hooks/useFetch";
 
 // Helpers
 import shuffleData from "./helpers/shuffleData";
 
-// Data
-import { exampleData } from "./config";
-
 const App = () => {
+  const [fetchedData] = useFetch(9);
   const [shuffledData, setShuffledData] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [clickedIDs, setClickedIDs] = useState([]);
 
   useEffect(() => {
-    shuffleData(exampleData, setShuffledData);
-  }, []); // When changing to use fetched data, need to list the fetched data as a dependency
+    shuffleData(fetchedData, setShuffledData);
+  }, [fetchedData]);
 
   const handleCardClick = (e, data, setData) => {
     shuffleData(data, setData);
@@ -41,14 +39,15 @@ const App = () => {
     }
   };
 
-  console.log(clickedIDs);
-  console.log("test");
-
   return (
     <>
       <GlobalStyle />
       <Scoreboard currentScore={currentScore} bestScore={bestScore} />
-      <Grid data={shuffledData} handleCardClick={(e) => handleCardClick(e, shuffledData, setShuffledData)} />
+      {fetchedData ? (
+        <Grid data={shuffledData} handleCardClick={(e) => handleCardClick(e, shuffledData, setShuffledData)} />
+      ) : (
+        <div className="error">Couldn't fetch Pokemons</div>
+      )}
     </>
   );
 };

@@ -11,6 +11,12 @@ const GlobalStyle = createGlobalStyle`
     body {
       background-color: #0A285F;
     }
+
+    .error {
+      color: #ffffff;
+      font-size: 2rem;
+      text-align: center;
+    }
 `;
 
 export default GlobalStyle;
