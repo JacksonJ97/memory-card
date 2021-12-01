@@ -6,10 +6,14 @@ import Card from "./Card";
 // Styles
 const Wrapper = styled.div`
   display: grid;
-  width: 648px;
   margin: 0 auto;
   grid-template-columns: repeat(3, 200px);
-  grid-gap: 24px;
+  justify-content: center;
+  gap: 24px;
+
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(auto-fit, 200px);
+  }
 `;
 
 const Grid = (props) => {

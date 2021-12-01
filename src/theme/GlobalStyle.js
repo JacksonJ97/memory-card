@@ -6,7 +6,10 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
       box-sizing: border-box;
       font-family: "Nunito", sans-serif;
-      background-color: #DFDFDF;
+    }
+
+    body {
+      background-color: #0A285F;
     }
 `;
 

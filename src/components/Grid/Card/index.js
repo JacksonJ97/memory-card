@@ -8,22 +8,28 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 200px;
   height: 200px;
+  color: #000000;
   border-radius: 6px;
-  box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.2);
-  transition: all 200ms ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.07);
+  background-color: #ffcc00;
+  transition: transform 200ms ease-in-out;
   cursor: pointer;
 
   :hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   img {
     display: block;
     margin: 0 auto;
+    width: 96px;
+    height: 96px;
   }
 
   p {
     text-align: center;
+    margin: 0.25em 0;
+    font-size: 1.25rem;
   }
 `;
 
