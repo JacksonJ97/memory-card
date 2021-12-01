@@ -6,7 +6,6 @@ import Card from "./Card";
 // Styles
 const Wrapper = styled.div`
   display: grid;
-  margin: 0 auto;
   grid-template-columns: repeat(3, 200px);
   justify-content: center;
   gap: 24px;

@@ -10,32 +10,28 @@ const Wrapper = styled.div`
   color: #ffffff;
   font-size: 1.25rem;
 
-  .current-score {
+  .current-score,
+  .best-score {
     padding: 1em;
-    background-color: #0075be;
     border-radius: 6px;
     width: 200px;
     margin: 24px;
     text-align: center;
   }
 
+  .current-score {
+    background-color: #0075be;
+  }
+
   .best-score {
-    padding: 1em;
     background-color: #ffcc00;
-    border-radius: 6px;
     color: #000000;
-    width: 200px;
-    margin: 24px;
-    text-align: center;
   }
 
   @media (max-width: 490px) {
     flex-direction: column;
 
-    .current-score {
-      margin: 12px;
-    }
-
+    .current-score,
     .best-score {
       margin: 12px;
     }
