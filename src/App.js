@@ -1,4 +1,4 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 // Components
 import Scoreboard from "./components/Scoreboard";
@@ -12,6 +12,7 @@ import GlobalStyle from "./theme/GlobalStyle";
 
 // Helpers
 // import formatData from "./helpers/formatData";
+import shuffleData from "./helpers/shuffleData";
 
 // Data
 import { exampleData } from "./config";
@@ -48,11 +49,20 @@ const App = () => {
 
   // console.log(fetchedData);
   // console.log(formattedData);
+  const [shuffledData, setShuffledData] = useState([]);
+
+  useEffect(() => {
+    shuffleData(exampleData, setShuffledData);
+  }, []);
+
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+
   return (
     <>
       <GlobalStyle />
       <Scoreboard />
-      <Grid data={exampleData} />
+      <Grid data={shuffledData} handleShuffle={() => shuffleData(shuffledData, setShuffledData)} />
     </>
   );
 };
